@@ -12,6 +12,15 @@
 <meta property="og:url" content="https://ferrey0917-del.github.io/convite-titas/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1B1030">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Missão Titãs">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Baloo+2:wght@500;700;800&family=Staatliches&display=swap');
 
@@ -694,6 +703,13 @@ function launchConfetti(){
     document.body.appendChild(c);
     setTimeout(() => c.remove(), 4500);
   }
+}
+
+/* ---------- PWA: registra o service worker ---------- */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
 }
 </script>
 </body>
